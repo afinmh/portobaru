@@ -117,7 +117,9 @@
           duration: 0.5, 
           ease: "power4.inOut" 
         })
-        
+        .call(() => {
+          initializeCube();
+        })
         // Show other elements with stagger effect
         .to(descriptionText, { 
           opacity: 1, 
@@ -181,11 +183,15 @@
             cubeNote.textContent = englishText;
           });
           
-          initializeCube();
           initializeDarkModeToggle();
           initializeActivitySection();
           initializeNavigation();
         });
+    });
+
+    // Auto scroll to hero section on refresh
+    window.addEventListener('beforeunload', function () {
+      window.scrollTo(0, 0);
     });
 
     // Cube functionality

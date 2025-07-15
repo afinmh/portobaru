@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 
     body {
       margin: 0;
@@ -85,7 +87,7 @@
     /* Navigation Menu */
     .navbar-menu {
       position: fixed;
-      top: 35px;
+      top: 20px;
       right: 50px;
       display: flex;
       gap: 30px;
@@ -94,6 +96,11 @@
       transform: translateY(-10px);
       transition: all 0.5s ease;
       pointer-events: none;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 10px 28px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
     }
 
     .navbar-menu.show {
@@ -138,12 +145,12 @@
       transform: translateY(-50%);
       color: #666;
       font-size: 18px;
-      font-family: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       z-index: 1000;
       opacity: 0;
       transition: opacity 1s ease, color 1s ease;
       max-width: 400px;
-      font-weight: 500;
+      font-weight: 450;
       line-height: 1.5;
     }
 
@@ -445,28 +452,149 @@
       border: 1px solid rgba(0, 0, 0, 0.2);
     }
 
-    /* Project Section Styles */
-    .project-section {
-      position: absolute;
-      top: 100vh;
-      left: 0;
+    /* Project Section Layout */
+    .project {
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       background: #F0EBDE;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
+      padding: 0;
+      position: relative;
       z-index: 10;
+      padding-bottom: 64px;
+    }
+
+    .project-content {
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      max-width: 1200px;
+      margin: 60px auto 0 auto;
+      gap: 60px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .project-info {
+      flex: 1 1 300px;
+      min-width: 220px;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: sticky;
+      top: 100px;
+    }
+
+    .project-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #222;
+      letter-spacing: 2px;
+    }
+
+    .project-desc {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .project-list {
+      flex: 2 1 600px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .project-item {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      padding: 20px 20px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: box-shadow 0.3s, transform 0.3s;
+      position: relative;
+      min-height: 320px;
+    }
+
+    .project-item:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    .project-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      background: #eee;
+    }
+
+    .project-meta {
+      width: 100%;
+    }
+
+    .project-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+      color: #222;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .project-short {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 18px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .project-link {
+      display: inline-block;
+      padding: 8px 18px;
+      background: #222;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+
+    .project-link:hover {
+      background: #444;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .project-content {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .project-info {
+        position: static;
+        max-width: 100%;
+        align-items: flex-start;
+      }
+      .project-list {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Activity Section Styles */
     .activity-section {
       position: absolute;
-      top: 100vh;
       left: 0;
       width: 100%;
       height: 100vh;
-      background: #F0EBDE;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -483,17 +611,6 @@
       justify-content: center;
     }
 
-    .activity-content {
-      margin-top: 2rem;
-    }
-
-    .activity-description {
-      font-size: 1.5rem;
-      line-height: 1.6;
-      margin: 0 0 3rem 0;
-      opacity: 0;
-      transform: translateY(30px);
-    }
 
     /* Photo Marquee Grid */
     .photo-marquee-grid {
@@ -512,7 +629,7 @@
       overflow: hidden;
       margin-top: 15px;
       margin-bottom: 15px;
-      height: 180px;
+      height: 200px;
       --item-width: 340px; /* 320px + 20px gap */
       --items-count: 4;
       --total-width: calc(var(--item-width) * var(--items-count));
@@ -521,7 +638,7 @@
     .marquee-track {
       display: flex;
       gap: 20px;
-      animation-duration: 40s;
+      animation-duration: 80s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
       width: fit-content;
@@ -536,10 +653,12 @@
       animation-name: marqueeRightSmooth;
     }
 
+    /* Tambahan untuk efek hover activity photo */
     .photo-item {
+      position: relative;
       flex-shrink: 0;
       width: 320px;
-      height: 180px;
+      height: 200px;
       border-radius: 4px;
       overflow: hidden;
       transition: transform 0.3s ease;
@@ -554,6 +673,38 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+      transition: filter 0.3s ease;
+    }
+
+    .photo-item:hover img {
+      filter: grayscale(1) brightness(0.7) blur(2px);
+    }
+
+    .photo-alt {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      white-space: pre-line;
+      text-align: center;
+      padding: 0 10px;
+    }
+
+    .photo-item:hover .photo-alt {
+      opacity: 1;
+    }
+
+    /* Dark mode support for overlay */
+    body.dark-mode .photo-alt {
+      color: #fff;
+      text-shadow: 0 2px 8px #000, 0 0 2px #000;
     }
 
     @keyframes marqueeLeftSmooth {
@@ -575,18 +726,32 @@
     }
 
     /* Dark mode styles for project section */
-    body.dark-mode .project-section {
+    body.dark-mode .project {
       background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+    }
+    body.dark-mode .project-title,
+    body.dark-mode .project-name {
       color: #fff !important;
     }
-
-    body.dark-mode .project-section * {
-      color: #fff !important;
+    body.dark-mode .project-desc,
+    body.dark-mode .project-short {
+      color: #ccc !important;
+    }
+    body.dark-mode .project-item {
+      background: #23273a;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    }
+    body.dark-mode .project-link {
+      background: #fff;
+      color: #222;
+    }
+    body.dark-mode .project-link:hover {
+      background: #eee;
     }
 
     /* Dark mode styles for activity section */
     body.dark-mode .activity-section {
-      background: #000;
+      background: #222;
     }
 
     body.dark-mode .activity-title,
@@ -600,4 +765,10 @@
 
     body.dark-mode .photo-item {
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark-mode .navbar-menu {
+      background: rgba(44,62,80,0.7);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
     }
