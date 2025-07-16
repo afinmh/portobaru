@@ -558,7 +558,12 @@
             }
           } else if (href === '#contact') {
             // Placeholder for future contact section
-            console.log('Contact section - coming soon');
+            const projectsSection = document.getElementById('contactSection');
+            if (projectsSection) {
+              projectsSection.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }
           }
         });
       });
@@ -566,3 +571,4 @@
 
     // Initialize dark mode toggle after splash screen
     // ...existing code...
+AOS.init();
