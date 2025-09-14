@@ -20,3 +20,64 @@ body.dark-mode .activity-section { background: #222; }
 body.dark-mode .activity-title, body.dark-mode .activity-description { color: #ecf0f1; }
 body.dark-mode .activity-title { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 body.dark-mode .photo-item { box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+
+/* ========================================= */
+/* RESPONSIVE STYLES FOR ACTIVITY SECTION    */
+/* ========================================= */
+
+/* === Tampilan Tablet (Layar di bawah 768px) === */
+@media (max-width: 768px) {
+  .marquee-row {
+    /* Mengurangi tinggi baris dan lebar acuan untuk item */
+    height: 160px;
+    --item-width: 260px; /* Lebar item dikurangi */
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .marquee-track {
+    /* Mengurangi jarak antar foto */
+    gap: 15px;
+    /* Menyesuaikan kecepatan animasi agar terasa pas */
+    animation-duration: 70s;
+  }
+
+  .photo-item {
+    /* Menyesuaikan ukuran fisik item foto */
+    width: 250px;
+    height: 160px;
+  }
+
+  .photo-alt {
+    /* Mengecilkan teks overlay */
+    font-size: 0.9rem;
+  }
+}
+
+/* === Tampilan Ponsel (Layar di bawah 480px) === */
+@media (max-width: 480px) {
+  .marquee-row {
+    /* Membuat baris dan item lebih kecil lagi untuk layar sempit */
+    height: 130px;
+    --item-width: 220px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .marquee-track {
+    gap: 10px;
+    /* Mengatur ulang kecepatan animasi untuk total lebar yang lebih pendek */
+    animation-duration: 55s;
+  }
+
+  .photo-item {
+    width: 210px;
+    height: 130px;
+  }
+
+  .photo-alt {
+    font-size: 0.8rem;
+    /* Memastikan teks bisa wrap jika terlalu panjang */
+    white-space: normal;
+  }
+}

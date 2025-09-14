@@ -4,7 +4,7 @@
   /* Diubah dari 'background' menjadi 'background-color' */
   background-color: #FFFDF5;
   /* Ditambahkan dari .project */
-  background-image: url('/Bahan/img/pattern.png');
+  background-image: url('/img/pattern.png');
   background-repeat: repeat;
   width: 100vw;
   position: relative;
@@ -23,7 +23,7 @@
 /* Dark Mode */
 body.dark-mode .contact-section {
   /* Properti 'background' diganti dengan 'background-image' untuk layering */
-  background-image: url('/Bahan/img/pattern.png'), linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+  background-image: url('/img/pattern.png'), linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
   background-repeat: repeat, no-repeat !important;
 }
 
@@ -64,3 +64,111 @@ body.dark-mode .contact-tech-list { background: none; box-shadow: none; }
 body.dark-mode .contact-tech-item { background: none; color: #fff; }
 body.dark-mode .contact-tech-item::after { background: #f7b267; }
 body.dark-mode .contact-tech-item:hover { color: #fff; background: none; }
+
+/* ========================================= */
+/* RESPONSIVE STYLES FOR CONTACT SECTION     */
+/* ========================================= */
+
+/* === Tampilan Tablet & Mobile Umum (Layar di bawah 900px) === */
+@media (max-width: 900px) {
+  /* --- Penyesuaian Layout Utama --- */
+  .contact-section {
+    /* Biarkan tinggi menyesuaikan konten di mobile */
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 5vw;
+  }
+
+  .contact-content-flex {
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    height: auto;
+    padding: 0; /* Menghindari padding ganda */
+  }
+
+  .contact-container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 20px 24px 20px;
+    width: 100%;
+    max-width: 500px; /* Batasi lebar agar mudah dibaca */
+  }
+
+  /* --- Penyesuaian Kolom Kiri & Kanan --- */
+  .contact-left {
+    margin-right: 0;
+    justify-content: center;
+    width: 100%;
+  }
+  .contact-right {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* --- Penyesuaian Daftar Sosial & Teknologi --- */
+  .contact-socials {
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .contact-tech-list {
+    /* Posisikan item di tengah agar sesuai dengan teks di atasnya */
+    justify-content: center;
+  }
+}
+
+/* === Tampilan Ponsel (Layar di bawah 480px) === */
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 60px 4vw;
+  }
+
+  .contact-container {
+    padding: 24px 15px;
+  }
+
+  /* --- Penyesuaian Ukuran Elemen --- */
+  .contact-idcard {
+    /* Perkecil ukuran ID card */
+    width: 200px;
+  }
+
+  .contact-social-btn {
+    /* Perkecil ukuran tombol sosial */
+    width: 56px;
+    height: 56px;
+  }
+  .contact-socials {
+    gap: 16px; /* Kurangi jarak antar tombol */
+  }
+  
+  /* --- Penyesuaian Tipografi --- */
+  .contact-title {
+    font-size: 1.8rem;
+  }
+  .contact-desc {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  
+  /* --- Penyesuaian Form --- */
+  .contact-input, .contact-textarea {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+  .contact-submit {
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  /* --- Penyesuaian Daftar Teknologi --- */
+  .contact-tech-title {
+    font-size: 1rem;
+  }
+  .contact-tech-item {
+    font-size: 0.9rem;
+    padding: 4px 10px;
+  }
+}

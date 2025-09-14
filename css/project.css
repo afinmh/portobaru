@@ -2,7 +2,7 @@
 .project {
   position: relative;
   background-color: #FFFDF5;
-  background-image: url('/Bahan/img/pattern.png');
+  background-image: url('/img/pattern.png');
   background-repeat: repeat;
 }
 
@@ -184,6 +184,117 @@ body.dark-mode .monitor-description .project-name { color: #fff; }
 body.dark-mode .monitor-description .project-link { color: #ffffff; background-color: #272727; }
 body.dark-mode .informatics-text { -webkit-text-stroke-color: #333; }
 body.dark-mode .project {
-  background-image: url('/Bahan/img/pattern.png'), linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background-image: url('/img/pattern.png'), linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
   background-repeat: repeat, no-repeat;
+}
+
+/* ========================================= */
+/* RESPONSIVE STYLES FOR PROJECT SECTION     */
+/* ========================================= */
+
+/* === Tablet & Mobile View (Layar di bawah 900px) === */
+@media (max-width: 900px) {
+  /* --- Penyesuaian Layout Utama --- */
+  .project {
+    /* Memberi ruang di atas dan bawah untuk seluruh bagian proyek di mobile */
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  .project-sticky-container {
+    /* Menonaktifkan perilaku 'sticky' di mobile */
+    position: static;
+    height: auto;
+  }
+
+  .project-content {
+    /* Mengubah layout menjadi kolom vertikal */
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    padding-top: 0; /* Padding sudah diatur di .project */
+  }
+  
+  .project-info {
+    /* Memastikan konten teks berada di tengah */
+    align-items: center;
+  }
+
+  /* --- Penyesuaian Monitor --- */
+  .monitor::before {
+    /* Mengecilkan tiang monitor */
+    width: 60px;
+    height: 30px;
+    bottom: -30px;
+  }
+  .monitor::after {
+    /* Mengecilkan dasar monitor */
+    width: 180px;
+    height: 10px;
+    bottom: -40px;
+  }
+
+  .monitor-description {
+    /* Menumpuk nama proyek dan tombol secara vertikal */
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 45px; /* Menyesuaikan jarak setelah stand dikecilkan */
+    width: 100%;
+  }
+
+  .monitor-description .project-link {
+    /* Memastikan tombol link memiliki lebar yang cukup dan teksnya di tengah */
+    width: 80%;
+    justify-content: center;
+  }
+  
+  /* --- Sembunyikan Elemen Khusus Desktop --- */
+  .project-list-scroll {
+    /* Area pemicu scroll tidak diperlukan di mobile */
+    display: none;
+  }
+
+  .informatics-text {
+    /* Teks dekoratif besar disembunyikan agar tidak mengganggu */
+    display: none;
+  }
+}
+
+
+/* === Tampilan Ponsel (Layar di bawah 480px) === */
+@media (max-width: 480px) {
+  .project {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  /* --- Penyesuaian Tipografi & Ukuran --- */
+  .project-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 1rem;
+  }
+
+  .project-github-btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+
+  /* --- Penyesuaian Detail Monitor --- */
+  .monitor {
+    padding: 12px;
+  }
+  .monitor-description {
+    padding: 16px;
+  }
+  .monitor-description .project-name {
+    font-size: 1rem;
+  }
+  .monitor-description .project-link {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 }

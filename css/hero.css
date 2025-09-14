@@ -384,3 +384,118 @@ body.dark-mode .scroll-link:hover {
   -webkit-text-stroke-width: clamp(1px, 0.2vw, 4px);
   -webkit-text-stroke-color: #333;
 }
+
+.author-short {
+  display: none;
+}
+.author-full {
+  display: inline;
+}
+@media (max-width: 600px) {
+  .author-short {
+    display: inline;
+  }
+  .author-full {
+    display: none;
+  }
+}
+
+/* =================================================== */
+/* KESELURUHAN KODE RESPONSIVE UNTUK MOBILE            */
+/* =================================================== */
+
+/* Layout Utama Mobile (Tablet & Ponsel) */
+@media (max-width: 768px) {
+  .hero-section {
+    align-items: flex-start;
+    /* Diperbesar untuk mendorong kubus lebih ke bawah */
+    padding-top: 38vh; 
+  }
+
+  .author-text {
+    font-size: clamp(70px, 18vw, 120px);
+    left: clamp(20px, 5vw, 40px);
+  }
+
+  .author-text.navbar {
+    font-size: clamp(24px, 6vw, 32px);
+    left: clamp(20px, 5vw, 40px);
+    top: clamp(15px, 3vh, 25px);
+  }
+
+  .education-info {
+    top: 15vh;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 90vw;
+    text-align: center;
+  }
+  
+  .education-title {
+    font-size: clamp(18px, 5vw, 22px);
+  }
+
+  .education-subtitle {
+    font-size: clamp(15px, 4vw, 18px);
+  }
+
+  .description-text {
+    /* Posisinya diturunkan untuk memberi ruang bagi kubus */
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 90vw;
+    text-align: center;
+    font-size: clamp(16px, 4vw, 18px);
+  }
+
+  .scene {
+    --cube-size: clamp(200px, 55vw, 280px);
+  }
+  
+  .scroll-indicator {
+    /* Posisinya diturunkan, mengikuti deskripsi */
+    top: 92%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .informatics-text,
+  .cube-note {
+    display: none;
+  }
+}
+
+/* Pergantian Nama Penulis di Layar Kecil */
+@media (max-width: 600px) {
+  .author-short {
+    display: inline;
+  }
+  .author-full {
+    display: none;
+  }
+}
+
+/* Penyesuaian untuk Layar Sangat Kecil */
+@media (max-width: 480px) {
+  .hero-section {
+    /* Disesuaikan juga untuk layar yang lebih kecil */
+    padding-top: 35vh;
+  }
+  
+  .education-info {
+    top: 14vh;
+  }
+
+  .description-text {
+    top: 65%;
+    font-size: clamp(14px, 4vw, 16px);
+  }
+
+  .scroll-indicator {
+    top: 75%;
+  }
+}
