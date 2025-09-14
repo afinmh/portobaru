@@ -1,0 +1,44 @@
+/* Simplified Nadella-like navbar */
+#header { position: fixed; top: 0; left: 0; width: 100%; z-index: 900;}
+#header .h-inner { display: flex; justify-content: flex-end; align-items: center; min-height: 52px; padding: 6px clamp(12px, 2vw, 24px); }
+
+/* Use only right side nav like Nadella */
+.h-gnav-pc { opacity: 0; pointer-events: none; transform: translateY(-8px); transition: opacity .3s ease, transform .3s ease; }
+.h-gnav-pc.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.h-gnav-pc ul { list-style: none; display: flex; gap: 0; margin: 0; padding: 0; }
+.h-gnav-pc li { background-color: #FFFDF5; border-top: 1px solid #111; border-bottom: 1px solid #111; border-left: 1px solid #111; font-size: clamp(10px, 0.9vw, 14px); line-height: 1; letter-spacing: 0; }
+.h-gnav-pc li:last-child { border-right: 1px solid #111; }
+.h-gnav-pc .g-menu { position: relative; cursor: pointer; padding: clamp(6px, 0.9vw, 12px) clamp(18px, 2.5vw, 30px); display: flex; align-items: center; justify-content: center; text-decoration: none; color: #111; overflow: hidden; }
+.h-gnav-pc .g-menu span { display: flex; justify-content: center; align-items: center; width: 100%; }
+.h-gnav-pc .g-menu span.primary { transform: translateY(0); transition: transform .3s ease; }
+.h-gnav-pc .g-menu span.secondary { position: absolute; top: 50%; left: 50%; transform: translate(-50%, 160%); transition: all .3s ease; }
+.h-gnav-pc .g-menu:hover:not(.active) span.primary { transform: translateY(-200%); }
+.h-gnav-pc .g-menu:hover:not(.active) span.secondary { transform: translate(-50%, -50%); }
+
+/* Active section styling */
+.h-gnav-pc .g-menu.active { background: #111; color: #fff; }
+
+/* Use author text variant on large screens; hide native placeholder navbar-menu */
+.navbar-menu { display: none !important; }
+
+/* Japanese label font mimic class available from Nadella */
+.koburina-w6 { font-family: "rand-md", "FP-こぶりなゴシック StdN W6", sans-serif; }
+
+/* --- Dark Mode Overrides --- */
+
+/* 1. Atur default item (tidak aktif) menjadi background hitam dan border putih */
+body.dark-mode .h-gnav-pc li {
+    background-color: #272727;
+    border-color: #000000; /* Shorthand untuk semua sisi border */
+}
+
+/* 2. Atur teks item tidak aktif menjadi putih */
+body.dark-mode .h-gnav-pc .g-menu {
+    color: #fff;
+}
+
+/* 3. Atur item AKTIF menjadi background putih dan teks hitam */
+body.dark-mode .h-gnav-pc .g-menu.active {
+    background: #fff;
+    color: #000;
+}

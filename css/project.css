@@ -1,0 +1,189 @@
+/* === PROJECT SECTION WRAPPER === */
+.project {
+  position: relative;
+  background-color: #FFFDF5;
+  background-image: url('/Bahan/img/pattern.png');
+  background-repeat: repeat;
+}
+
+/* === STICKY CONTAINER === */
+.project-sticky-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 3;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: 0 auto;
+  gap: 10%;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+/* === Bagian Info Kiri === */
+.project-info {
+  flex: 1 1 320px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.project-title {
+  font-size: clamp(2.8rem, 5vw, 4.2rem); /* ADJUSTED */
+  font-weight: 700;
+  margin-bottom: 0px;
+  color: #1a1a1a;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+}
+
+.project-desc {
+  font-size: clamp(1.1rem, 1.2vw, 1.5rem); /* ADJUSTED */
+  color: #555;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.7;
+  max-width: 100%;
+}
+
+.project-github-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  background: #181818;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(0.9rem, 1vw, 1rem); /* ADJUSTED */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.25s ease;
+}
+
+.project-github-btn:hover {
+  background: #000;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* === Bagian Monitor Kanan === */
+.monitor-display {
+  flex: 5 1 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monitor {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  background: #1a1a1a;
+  padding: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  z-index: 1;
+  transition: background .3s ease;
+}
+.monitor::before, .monitor::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); background: #1a1a1a; transition: background .3s ease; }
+.monitor::before { bottom: -40px; width: 80px; height: 40px; z-index: -1; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+.monitor::after { bottom: -55px; width: 250px; height: 15px; z-index: -2; border-radius: 8px; }
+
+.monitor-screen { 
+  width: 100%; 
+  background: #fff; 
+  border-radius: 8px; 
+  overflow: hidden; 
+  aspect-ratio: 1897 / 928;
+  position: relative; 
+}
+
+.monitor-screen img { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;
+  display: block; 
+  transition: opacity 0.5s ease-in-out; 
+}
+
+.monitor-description { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  width: 90%; 
+  margin-top: 50px; 
+  padding: 20px 24px; 
+  background: #e9e2d1; 
+  border-radius: 12px; 
+}
+.monitor-description .project-name { font-size: clamp(1.1rem, 1.2vw, 1.2rem); color: #333; margin: 0; padding-right: 16px; font-weight: 500;} /* ADJUSTED */
+.monitor-description .project-link { display: inline-flex; align-items:center; padding: 10px 24px; background: #1a1a1a; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: clamp(0.95rem, 1vw, 1rem); white-space: nowrap; transition: background .2s; } /* ADJUSTED */
+.monitor-description .project-link:hover { background: #444; }
+
+
+/* === Area Scroll (Trigger) === */
+.project-list-scroll {
+  position: relative;
+  z-index: 2;
+}
+
+.project-list-item {
+  height: 100vh;
+}
+
+/* === Class Animasi === */
+.is-fading-out { opacity: 0; }
+.is-fading-in { opacity: 1; }
+
+/* === Perbaikan Teks Informatics === */
+.informatics-text {
+  position: fixed;
+  left: 96%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center;
+  font-size: clamp(120px, 10vw, 450px);
+  font-weight: bold;
+  font-family: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  color: transparent;
+  -webkit-text-stroke: clamp(1px, 0.2vw, 4px) #ddd;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s ease; /* Delay 1s dihapus dari sini */
+  pointer-events: none;
+  user-select: none;
+  font-style: italic;
+}
+.informatics-text.show { opacity: 1; }
+
+/* === Media Query & Dark Mode === */
+@media (max-width: 900px) {
+  .project-sticky-container { position: static; height: auto; }
+  .project-content { flex-direction: column; text-align: center; gap: 40px; padding-top: 80px; }
+  .project-info { align-items: center; }
+  .project-list-scroll { display: none; }
+}
+
+body.dark-mode .project-title, body.dark-mode .project-desc { color: #fff; }
+body.dark-mode .project-github-btn { background: #272727; color: #fff; }
+body.dark-mode .monitor, body.dark-mode .monitor::before, body.dark-mode .monitor::after { background: #272727; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+body.dark-mode .monitor-description { background: #353537; }
+body.dark-mode .monitor-description .project-name { color: #fff; }
+body.dark-mode .monitor-description .project-link { color: #ffffff; background-color: #272727; }
+body.dark-mode .informatics-text { -webkit-text-stroke-color: #333; }
+body.dark-mode .project {
+  background-image: url('/Bahan/img/pattern.png'), linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background-repeat: repeat, no-repeat;
+}

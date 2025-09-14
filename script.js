@@ -53,7 +53,7 @@
       const loadingText = document.getElementById('loadingText');
       const mainContent = document.getElementById('mainContent');
       const cubeNote = document.getElementById('cubeNote');
-      const informaticsText = document.querySelector('.informatics-text');
+  const informaticsText = document.querySelector('.informatics-text');
 
       // Split education text into characters and description into words
       const descriptionWords = splitTextToWords(descriptionText);
@@ -186,6 +186,7 @@
           initializeDarkModeToggle();
           initializeActivitySection();
           initializeNavigation();
+          initializeScrollProgress();
         });
     });
 
@@ -397,7 +398,7 @@
 
     // Dark mode long press functionality
     function initializeDarkModeToggle() {
-      const longPressIndicator = document.getElementById('longPressIndicator');
+  const longPressIndicator = document.getElementById('longPressIndicator');
       let isLongPressing = false;
       let longPressTimer = null;
       let startTime = 0;
@@ -430,12 +431,16 @@
               document.body.classList.toggle('dark-mode', isDarkMode);
               longPressIndicator.classList.toggle('dark-mode', isDarkMode);
               
-              // Change favicon based on dark mode
+              // Change favicon and header logo based on dark mode
               const favicon = document.getElementById('favicon');
               if (isDarkMode) {
                 favicon.href = 'img/logo-dark.svg';
+                const headerLogo = document.getElementById('headerLogo');
+                if (headerLogo) headerLogo.src = 'img/logo-dark.svg';
               } else {
                 favicon.href = 'img/logo.svg';
+                const headerLogo = document.getElementById('headerLogo');
+                if (headerLogo) headerLogo.src = 'img/logo.svg';
               }
               
               // Reset
@@ -470,9 +475,9 @@
 
     // Activity Section Animation
     function initializeActivitySection() {
-      const authorText = document.getElementById('authorText');
-      const cubeNote = document.getElementById('cubeNote');
-      const navbarMenu = document.getElementById('navbarMenu');
+  const authorText = document.getElementById('authorText');
+  const cubeNote = document.getElementById('cubeNote');
+  const header = document.getElementById('header');
       
       // Handle author text scaling on scroll
       function handleScroll() {
@@ -486,10 +491,10 @@
         
         if (authorBottom >= cubeNoteTop) {
           authorText.classList.add('navbar');
-          navbarMenu.classList.add('show');
+          if (header) header.querySelector('.h-gnav-pc')?.classList.add('show');
         } else {
           authorText.classList.remove('navbar');
-          navbarMenu.classList.remove('show');
+          if (header) header.querySelector('.h-gnav-pc')?.classList.remove('show');
         }
       }
       
@@ -527,7 +532,7 @@
 
     // Navigation functionality
     function initializeNavigation() {
-      const navLinks = document.querySelectorAll('.nav-link');
+      const navLinks = document.querySelectorAll('.g-menu, .nav-link');
       
       navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -567,6 +572,43 @@
           }
         });
       });
+
+      // Active state tracking
+      const sections = [
+        { id: 'about', el: document.body },
+        { id: 'project', el: document.getElementById('projectSection') },
+        { id: 'activity', el: document.getElementById('activitySection') },
+        { id: 'contact', el: document.getElementById('contactSection') }
+      ];
+      function updateActive() {
+        const y = window.scrollY + 120; // offset for header
+        let active = 'about';
+        sections.forEach(s => {
+          if (!s.el) return;
+          const top = s.el === document.body ? 0 : s.el.offsetTop;
+          if (y >= top) active = s.id;
+        });
+        document.querySelectorAll('.g-menu').forEach(a => {
+          const href = a.getAttribute('href') || '';
+          a.classList.toggle('active', href === `#${active}`);
+        });
+      }
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+    }
+
+    // Bottom scroll progress bar
+    function initializeScrollProgress() {
+      const bar = document.getElementById('scrollProgressBar');
+      if (!bar) return;
+      function onScroll() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = progress + '%';
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
     }
 
     // Initialize dark mode toggle after splash screen
